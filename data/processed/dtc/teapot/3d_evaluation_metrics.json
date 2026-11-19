@@ -1,7 +1,7 @@
 {
     "scene_name": "teapot",
     "metrics": {
-        "SAM2_NeRF": {
+        "EAGLE": {
             "chamfer_distance_m": 0.014651,
             "precision_1cm_pct": 95.62,
             "recall_1cm_pct": 72.68,

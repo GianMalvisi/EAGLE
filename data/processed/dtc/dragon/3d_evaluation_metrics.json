@@ -1,7 +1,7 @@
 {
     "scene_name": "dragon",
     "metrics": {
-        "SAM2_NeRF": {
+        "EAGLE": {
             "chamfer_distance_m": 0.007397,
             "precision_1cm_pct": 93.68,
             "recall_1cm_pct": 90.16,

@@ -1,7 +1,7 @@
 {
     "scene_name": "mug",
     "metrics": {
-        "SAM2_NeRF": {
+        "EAGLE": {
             "chamfer_distance_m": 0.018965,
             "precision_1cm_pct": 66.85,
             "recall_1cm_pct": 46.76,

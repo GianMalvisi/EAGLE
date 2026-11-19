@@ -1,7 +1,7 @@
 {
     "scene_name": "spoon",
     "metrics": {
-        "SAM2_NeRF": {
+        "EAGLE": {
             "chamfer_distance_m": 0.007692,
             "precision_1cm_pct": 95.33,
             "recall_1cm_pct": 93.2,

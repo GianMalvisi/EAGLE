@@ -1,7 +1,7 @@
 {
     "scene_name": "duck",
     "metrics": {
-        "SAM2_NeRF": {
+        "EAGLE": {
             "chamfer_distance_m": 0.010111,
             "precision_1cm_pct": 90.62,
             "recall_1cm_pct": 87.66,

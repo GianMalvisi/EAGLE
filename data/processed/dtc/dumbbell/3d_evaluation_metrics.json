@@ -1,7 +1,7 @@
 {
     "scene_name": "dumbbell",
     "metrics": {
-        "SAM2_NeRF": {
+        "EAGLE": {
             "chamfer_distance_m": 0.009933,
             "precision_1cm_pct": 87.75,
             "recall_1cm_pct": 88.38,

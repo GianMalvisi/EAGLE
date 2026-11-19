@@ -1,7 +1,7 @@
 {
     "scene_name": "gargoyle",
     "metrics": {
-        "SAM2_NeRF": {
+        "EAGLE": {
             "chamfer_distance_m": 0.006541,
             "precision_1cm_pct": 99.23,
             "recall_1cm_pct": 95.06,

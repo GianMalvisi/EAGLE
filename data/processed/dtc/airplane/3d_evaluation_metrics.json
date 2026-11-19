@@ -1,7 +1,7 @@
 {
     "scene_name": "airplane",
     "metrics": {
-        "SAM2_NeRF": {
+        "EAGLE": {
             "chamfer_distance_m": 0.008618,
             "precision_1cm_pct": 89.88,
             "recall_1cm_pct": 96.36,

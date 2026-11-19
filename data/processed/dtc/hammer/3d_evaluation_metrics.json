@@ -1,7 +1,7 @@
 {
     "scene_name": "hammer",
     "metrics": {
-        "SAM2_NeRF": {
+        "EAGLE": {
             "chamfer_distance_m": 0.011795,
             "precision_1cm_pct": 91.01,
             "recall_1cm_pct": 82.57,

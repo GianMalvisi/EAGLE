@@ -1,7 +1,7 @@
 {
     "scene_name": "barn",
     "metrics": {
-        "SAM2_NeRF": {
+        "EAGLE": {
             "chamfer_distance_m": 0.026161,
             "precision_1cm_pct": 57.78,
             "recall_1cm_pct": 42.01,
