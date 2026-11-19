@@ -2,7 +2,7 @@
 
 **[Gianluca Malvisi](https://github.com/GianMalvisi), Simone Melzi, Alessandro Riva**
 
-University of Milano-Bicocca — Department of Computer Science, Systematics and Communication
+University of Milano-Bicocca - Department of Computer Science, Systematics and Communication
 
 **Published at [STAG 2026](https://www.stag-conference.org/) (Smart Tools and Applications in Graphics)**
 
@@ -10,7 +10,6 @@ University of Milano-Bicocca — Department of Computer Science, Systematics and
 
 ![EAGLE Teaser](assets/teaser.png)
 
----
 
 ## Overview
 
@@ -101,12 +100,12 @@ If you use this code in your research, please cite:
 
 ```bibtex
 @inproceedings{malvisi2026eagle,
-    title     = {{EAGLE}: Egocentric Automated Gaze-driven Lifting of Entities for {3D} Segmentation},
-    author    = {Malvisi, Gianluca and Melzi, Simone and Riva, Alessandro},
+    title = {{EAGLE}: Egocentric Automated Gaze-driven Lifting of Entities for {3D} Segmentation},
+    author = {Malvisi, Gianluca and Melzi, Simone and Riva, Alessandro},
     booktitle = {Smart Tools and Applications in Graphics (STAG)},
-    year      = {2026},
+    year = {2026},
     publisher = {Eurographics Association},
-    doi       = {10.2312/stag.2026.xxx}
+    doi = {10.2312/stag.2026.xxx}
 }
 ```
 
@@ -116,4 +115,4 @@ We thank Meta for providing the Project Aria glasses through the [Aria Research 
 
 ## License
 
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
