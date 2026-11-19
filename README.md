@@ -1,126 +1,116 @@
-# aria_pylib
+# EAGLE: Egocentric Automated Gaze-driven Lifting of Entities for 3D Segmentation
 
-End-to-end Python framework for **gaze-driven Segmentation and 3D Object Reconstruction** from [Project Aria](https://www.projectaria.com/) Gen 1 egocentric recordings.
+**[Gianluca Malvisi](https://github.com/GianMalvisi), [Simone Melzi](https://simonemelzi.github.io/), Alessandro Riva**
 
-Developed as part of a research internship at the **University of Milano-Bicocca**, Department of Computer Science, Systematics and Communication.
+University of Milano-Bicocca — Department of Computer Science, Systematics and Communication
+
+**Published at [STAG 2026](https://www.stag-conference.org/) (Smart Tools and Applications in Graphics)**
+
+[[Paper]](https://diglib.eg.org/handle/10.2312/stag20261xxx) [[BibTeX]](#citation)
+
+---
 
 ## Overview
 
-`aria_pylib` automates the complete path from a raw Aria VRS recording to isolated 3D object meshes, using eye-tracking data to drive the segmentation process without manual annotation:
+EAGLE is a gaze-driven pipeline for automatic 3D object segmentation from egocentric recordings captured with [Project Aria](https://www.projectaria.com/) glasses. The system extracts isolated 3D sub-meshes of objects the user is looking at, without manual annotation.
 
-1. **Data Loading** — VRS multi-modal stream access (RGB, SLAM, IMU, ET), frame extraction at configurable FPS.
-2. **Sensor Synchronization** — Temporal alignment between visual frames, inertial sensors, and eye-tracking data.
-3. **Gaze Processing** — MPS eye-gaze alignment, CPF-to-RGB projection via device calibration, I-DT fixation detection.
-4. **2D Segmentation** — SAM2 multi-run mono-prompt mask generation from detected fixations.
-5. **Preprocessing** — Distortion border cropping and COLMAP pose estimation via `ns-process-data`.
-6. **3D Reconstruction** — Nerfacto training and Poisson mesh export via nerfstudio.
-7. **Semantic Projection** — Mask-to-mesh projection with pinhole + OPENCV distortion model and configurable supermajority voting.
-8. **Object Isolation** — Sub-mesh extraction with face remapping, preserving original vertex colors and topology.
+The pipeline operates through two parallel streams:
 
-## Tech Stack
+1. **2D Segmentation** — Eye-tracking fixations are detected via the I-DT algorithm and used as point prompts for SAM 2, which propagates masks bidirectionally across the video.
+2. **3D Reconstruction** — RGB frames are processed through COLMAP (SfM) and Nerfstudio (Nerfacto) to produce a dense 3D mesh via Poisson reconstruction.
 
-- **Language:** Python 3.10+
-- **Core Library:** `projectaria-tools` (Meta)
-- **3D Reconstruction:** nerfstudio, COLMAP
-- **Segmentation:** SAM2 (Segment Anything Model 2)
-- **Mathematical Engine:** NumPy, PyTorch
-- **Mesh Processing:** plyfile, Open3D
-- **Visualization:** Matplotlib
+The two streams converge in a **mask projection** phase: 2D masks are projected onto the 3D mesh vertices using the estimated camera poses, and a **majority voting** filter (66.6% threshold) resolves projective ambiguities (tunnel effect), yielding the final isolated sub-mesh.
+
+Quantitative evaluation on the [DTC dataset](https://github.com/facebookresearch/digital-twin-catalog) (15 scenes) shows that EAGLE outperforms SA3D across all spatial metrics.
 
 ## Installation
 
 ### Prerequisites
 
-- Windows 10/11 or Linux
 - Python 3.10+
-- CUDA-capable GPU (recommended for SAM2 and nerfstudio)
+- CUDA-capable GPU (required for SAM 2 and Nerfstudio)
 
 ### Setup
 
 ```bash
-git clone https://github.com/gianMalvisi/AriaGen1.git
-cd AriaGen1
+git clone https://github.com/GianMalvisi/EAGLE.git
+cd EAGLE
 python -m venv venv
-.\venv\Scripts\activate        # Windows
-# source venv/bin/activate     # Linux
+source venv/bin/activate        # Linux
+# .\venv\Scripts\activate       # Windows
 
 pip install "projectaria-tools[all]"
-pip install -e .
-```
-
-For nerfstudio and SAM2 integration:
-
-```bash
 pip install -e ".[nerfstudio,sam2]"
-```
-
-## Package Structure
-
-```
-aria_pylib/
-├── __init__.py         — Public API exports
-├── loaders.py          — AriaDataset, AriaMultistreamDataset, frame extraction
-├── sync.py             — Stream synchronization and temporal alignment
-├── utils.py            — Recording inspection and file discovery
-├── gaze.py             — Gaze projection, alignment, fixation detection
-├── segmentation.py     — SAM2 inference and palettized mask I/O
-├── preprocessing.py    — Image cropping and COLMAP integration
-├── mesh.py             — PLY I/O and sub-mesh extraction
-├── projection.py       — Camera projection and majority voting
-└── nerfstudio.py       — Training, export, and pipeline loading helpers
-```
-
-## Quick Start
-
-```python
-from aria_pylib.loaders import extract_frames
-from aria_pylib.gaze import align_gaze_to_rgb, detect_fixations_idt, fixations_to_prompts
-from aria_pylib.segmentation import run_multi_prompt, merge_masks, export_masks
-from aria_pylib.preprocessing import apply_crop, run_colmap
-from aria_pylib.mesh import load_ply, extract_submesh
-from aria_pylib.projection import project_masks_onto_mesh, majority_vote
-from aria_pylib.nerfstudio import load_pipeline, export_mesh
 ```
 
 ## Project Structure
 
 ```
-AriaGen1/
-├── aria_pylib/         — Installable Python package (this library)
-├── notebooks/          — Jupyter notebooks for exploration and prototyping
+EAGLE/
+├── eagle/              — Python package (installable)
+│   ├── loaders.py      — VRS frame extraction and PyTorch datasets
+│   ├── sync.py         — Multi-stream temporal synchronization
+│   ├── gaze.py         — Gaze projection, I-DT fixation detection
+│   ├── segmentation.py — SAM 2 inference and palettized mask I/O
+│   ├── preprocessing.py— Distortion cropping and COLMAP integration
+│   ├── nerfstudio.py   — Nerfacto training and mesh export helpers
+│   ├── projection.py   — Mask-to-mesh projection and majority voting
+│   ├── mesh.py         — PLY I/O and sub-mesh extraction
+│   └── utils.py        — Recording inspection and file discovery
+├── notebooks/
+│   ├── end_to_end_pipeline.ipynb  — Full EAGLE pipeline demo
+│   ├── sa3d_comparison.ipynb      — Quantitative comparison (Table 1)
+│   └── exploration/               — Development notebooks (data loading, visualization, etc.)
 ├── data/
-│   ├── raw/            — VRS recordings and MPS outputs
-│   └── outputs/        — Extracted frames, masks, nerfstudio models
-├── checkpoints/        — SAM2 model weights
-├── pyproject.toml      — Package build configuration
+│   └── processed/dtc/  — Per-scene evaluation metrics (Table 1)
+├── pyproject.toml
+├── LICENSE
 └── README.md
 ```
 
-## Development Roadmap
+## Usage
 
-### Phase 0: Environment & Documentation
-Configuration of the Python environment, `projectaria-tools` validation, and study of Aria/nerfstudio documentation.
+```python
+from eagle.loaders import extract_frames
+from eagle.gaze import align_gaze_to_rgb, detect_fixations_idt, fixations_to_prompts
+from eagle.segmentation import run_multi_prompt, merge_masks, export_masks
+from eagle.preprocessing import apply_crop, run_colmap
+from eagle.nerfstudio import load_pipeline, export_mesh
+from eagle.mesh import load_ply, extract_submesh
+from eagle.projection import project_masks_onto_mesh, majority_vote
+```
 
-### Phase 1: Stream Analysis & Validation
-Inspection of `.vrs` multi-modal files to understand stream structures (RGB, SLAM, Audio, IMU, Eye Tracking).
-    
-### Phase 2: Data Extraction Pipeline
-Single-camera and multi-stream frame extraction with temporal synchronization across sensors.
+See [`notebooks/end_to_end_pipeline.ipynb`](notebooks/end_to_end_pipeline.ipynb) for the complete pipeline walkthrough.
 
-### Phase 3: 2D Segmentation (SAM2 / SAM3)
-Evaluation of SAM2 and SAM3 for video object segmentation from egocentric recordings. Comparison of single-run multi-prompt vs multi-run mono-prompt strategies.
+## Evaluation
 
-### Phase 4: 3D Reconstruction & Semantic Projection
-Integration with nerfstudio for NeRF-based scene reconstruction. Semantic mask projection onto exported meshes via majority voting. Sub-mesh isolation of segmented objects.
+Quantitative results on the DTC dataset (15 scenes), comparing EAGLE against SA3D:
 
-### Phase 5: End-to-End Automated Pipeline
-Fully automated pipeline from VRS recording to isolated 3D objects using eye-tracking fixation detection as the sole input for segmentation prompts.
+| Method | Chamfer (mm) ↓ | Precision (%) ↑ | Recall (%) ↑ | F-Score (%) ↑ | IoU (%) ↑ |
+|--------|:-:|:-:|:-:|:-:|:-:|
+| **EAGLE** | **10.2** | **90.34** | **83.34** | **86.45** | **51.84** |
+| SA3D | 19.2 | 71.99 | 63.33 | 66.94 | 30.87 |
 
-## Contacts
+Per-scene results are available in `data/processed/dtc/`.
 
-**Gianluca Malvisi** — [g.malvisi04@gmail.com](mailto:g.malvisi04@gmail.com)
-- University of Milano-Bicocca, Department of Computer Science, Systematics and Communication
-- GitHub: [gianMalvisi](https://github.com/gianMalvisi)
+## Citation
+
+If you use this code in your research, please cite:
+
+```bibtex
+@inproceedings{malvisi2026eagle,
+    title     = {{EAGLE}: Egocentric Automated Gaze-driven Lifting of Entities for {3D} Segmentation},
+    author    = {Malvisi, Gianluca and Melzi, Simone and Riva, Alessandro},
+    booktitle = {Smart Tools and Applications in Graphics (STAG)},
+    year      = {2026},
+    publisher = {Eurographics Association},
+    doi       = {10.2312/stag.2026.xxx}
+}
+```
+
+## Acknowledgements
+
+We thank Meta for providing the Project Aria glasses through the [Aria Research Kit](https://www.projectaria.com/).
 
 ## License
 
