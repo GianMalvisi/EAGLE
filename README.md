@@ -1,6 +1,6 @@
 # EAGLE: Egocentric Automated Gaze-driven Lifting of Entities for 3D Segmentation
 
-**[Gianluca Malvisi](https://github.com/GianMalvisi), [Simone Melzi](https://simonemelzi.github.io/), Alessandro Riva**
+**[Gianluca Malvisi](https://github.com/GianMalvisi), Simone Melzi, Alessandro Riva**
 
 University of Milano-Bicocca — Department of Computer Science, Systematics and Communication
 
@@ -21,7 +21,7 @@ The pipeline operates through two parallel streams:
 
 The two streams converge in a **mask projection** phase: 2D masks are projected onto the 3D mesh vertices using the estimated camera poses, and a **majority voting** filter (66.6% threshold) resolves projective ambiguities (tunnel effect), yielding the final isolated sub-mesh.
 
-Quantitative evaluation on the [DTC dataset](https://github.com/facebookresearch/digital-twin-catalog) (15 scenes) shows that EAGLE outperforms SA3D across all spatial metrics.
+Quantitative evaluation on the ([https://github.com/facebookresearch/digital-twin-catalog](https://explorer.projectaria.com/dtc)) (15 scenes) shows that EAGLE outperforms SA3D across all spatial metrics.
 
 ## Installation
 
