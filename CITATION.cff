@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "EAGLE: Egocentric Automated Gaze-driven Lifting of Entities for 3D Segmentation"
+type: software
+authors:
+  - family-names: Malvisi
+    given-names: Gianluca
+    orcid: "https://orcid.org/0009-0008-3914-6660"
+  - family-names: Melzi
+    given-names: Simone
+    orcid: "https://orcid.org/0000-0003-2790-9591"
+  - family-names: Riva
+    given-names: Alessandro
+    orcid: "https://orcid.org/0009-0007-0177-0604"
+preferred-citation:
+  type: conference-paper
+  title: "EAGLE: Egocentric Automated Gaze-driven Lifting of Entities for 3D Segmentation"
+  authors:
+    - family-names: Malvisi
+      given-names: Gianluca
+    - family-names: Melzi
+      given-names: Simone
+    - family-names: Riva
+      given-names: Alessandro
+  collection-title: "Smart Tools and Applications in Graphics (STAG)"
+  year: 2026
+  publisher:
+    name: "Eurographics Association"
+  doi: "10.2312/stag.2026.xxx"
