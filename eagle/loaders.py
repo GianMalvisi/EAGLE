@@ -1,5 +1,5 @@
 """
-aria_pylib.loaders: VRS frame extraction and PyTorch dataset classes
+eagle.loaders: VRS frame extraction and PyTorch dataset classes
 for single-stream and synchronized multi-stream access.
 """
 

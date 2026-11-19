@@ -1,5 +1,5 @@
 """
-aria_pylib: End-to-end pipeline for gaze-driven 3D object segmentation
+eagle: End-to-end pipeline for gaze-driven 3D object segmentation
 and isolation from Project Aria egocentric recordings.
 
 Modules:

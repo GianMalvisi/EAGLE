@@ -1,5 +1,5 @@
 """
-aria_pylib.mesh: PLY mesh I/O and sub-mesh extraction with face remapping.
+eagle.mesh: PLY mesh I/O and sub-mesh extraction with face remapping.
 """
 
 import os

@@ -1,5 +1,5 @@
 """
-aria_pylib.preprocessing: Image cropping for Aria lens distortion removal
+eagle.preprocessing: Image cropping for Aria lens distortion removal
 and COLMAP pose estimation via nerfstudio.
 """
 

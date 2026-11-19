@@ -1,5 +1,5 @@
 """
-aria_pylib.projection: Pinhole + OPENCV radial-tangential projection,
+eagle.projection: Pinhole + OPENCV radial-tangential projection,
 mask-to-mesh projection, and majority voting for semantic labelling.
 """
 

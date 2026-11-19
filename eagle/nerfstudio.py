@@ -1,5 +1,5 @@
 """
-aria_pylib.nerfstudio: Helpers for discovering training checkpoints,
+eagle.nerfstudio: Helpers for discovering training checkpoints,
 loading the nerfstudio pipeline with embedding-size mismatch handling,
 and running training / export commands.
 """

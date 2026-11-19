@@ -1,5 +1,5 @@
 """
-aria_pylib.gaze: Eye-gaze projection, temporal alignment with RGB frames,
+eagle.gaze: Eye-gaze projection, temporal alignment with RGB frames,
 and I-DT dispersion-based fixation detection.
 """
 

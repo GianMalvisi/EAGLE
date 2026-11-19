@@ -1,5 +1,5 @@
 """
-aria_pylib.segmentation: SAM2 multi-run mono-prompt video segmentation
+eagle.segmentation: SAM2 multi-run mono-prompt video segmentation
 and palettized mask I/O.
 """
 

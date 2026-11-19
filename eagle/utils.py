@@ -1,5 +1,5 @@
 """
-aria_pylib.utils: Recording inspection, file-discovery, and modality
+eagle.utils: Recording inspection, file-discovery, and modality
 classification helpers.
 """
 

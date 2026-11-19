@@ -1,5 +1,5 @@
 """
-aria_pylib.sync: Stream resolution and temporal synchronization for
+eagle.sync: Stream resolution and temporal synchronization for
 multi-stream Aria VRS recordings.
 """
 
