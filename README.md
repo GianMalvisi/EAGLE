@@ -8,6 +8,8 @@ University of Milano-Bicocca — Department of Computer Science, Systematics and
 
 [[Paper]](https://diglib.eg.org/handle/10.2312/stag20261xxx) [[BibTeX]](#citation)
 
+![EAGLE Teaser](assets/teaser.png)
+
 ---
 
 ## Overview
