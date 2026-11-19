@@ -3,20 +3,23 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "aria_pylib"
+name = "eagle"
 version = "0.1.0"
-description = "End-to-end pipeline for gaze-driven segmentation and 3D object reconstruction from Project Aria egocentric recordings."
+description = "EAGLE: Egocentric Automated Gaze-driven Lifting of Entities for 3D Segmentation."
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [
     { name = "Gianluca Malvisi", email = "g.malvisi04@gmail.com" },
+    { name = "Simone Melzi" },
+    { name = "Alessandro Riva" },
 ]
 license = { text = "MIT" }
-keywords = ["projectaria", "vrs", "egocentric", "segmentation", "nerf", "eye-tracking", "computer-vision"]
+keywords = ["eagle", "projectaria", "egocentric", "segmentation", "nerf", "eye-tracking", "3d-reconstruction", "gaze"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+    "Intended Audience :: Science/Research",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
     "Topic :: Scientific/Engineering :: Image Recognition",
 ]
@@ -38,7 +41,9 @@ nerfstudio = ["nerfstudio"]
 sam2 = ["segment-anything-2"]
 
 [project.urls]
-"Homepage" = "https://github.com/gianMalvisi/ariagen1"
+"Homepage" = "https://github.com/GianMalvisi/EAGLE"
+"Paper" = "https://diglib.eg.org/handle/10.2312/stag20261xxx"
+"Bug Tracker" = "https://github.com/GianMalvisi/EAGLE/issues"
 
 [tool.hatch.build.targets.wheel]
-packages = ["aria_pylib"]
+packages = ["eagle"]
