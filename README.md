@@ -22,7 +22,7 @@ The pipeline operates through two parallel streams:
 
 The two streams converge in a **mask projection** phase: 2D masks are projected onto the 3D mesh vertices using the estimated camera poses, and a **majority voting** filter (66.6% threshold) resolves projective ambiguities (tunnel effect), yielding the final isolated sub-mesh.
 
-Quantitative evaluation on the ([https://github.com/facebookresearch/digital-twin-catalog](https://explorer.projectaria.com/dtc)) (15 scenes) shows that EAGLE outperforms SA3D across all spatial metrics.
+Quantitative evaluation on the [Digital Twin Catalog](https://explorer.projectaria.com/dtc) (15 scenes) shows that EAGLE outperforms SA3D across all spatial metrics.
 
 ## Installation
 
