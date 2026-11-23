@@ -6,7 +6,7 @@ University of Milano-Bicocca - Department of Computer Science, Systematics and C
 
 **Published at [STAG 2026](https://www.stag-conference.org/) (Smart Tools and Applications in Graphics)**
 
-[[Paper]](https://diglib.eg.org/handle/10.2312/stag20261xxx) [[BibTeX]](#citation)
+[[Paper]](https://doi.org/10.2312/stag.20261011) [[BibTeX]](#citation)
 
 ![EAGLE Teaser](assets/teaser.png)
 
@@ -99,13 +99,16 @@ Per-scene results are available in `data/processed/dtc/`.
 If you use this code in your research, please cite:
 
 ```bibtex
-@inproceedings{malvisi2026eagle,
-    title = {{EAGLE}: Egocentric Automated Gaze-driven Lifting of Entities for {3D} Segmentation},
+@inproceedings{10.2312:stag.20261011,
+    booktitle = {Smart Tools and Applications in Graphics - Eurographics Italian Chapter Conference},
+    editor = {Allegra, Dario and Maggioli, Filippo and Jaspe-Villanueva, Alberto and Cherchi, Gianmarco and Riso, Marzia},
+    title = {{EAGLE: Egocentric Automated Gaze-driven Lifting of Entities for 3D Segmentation}},
     author = {Malvisi, Gianluca and Melzi, Simone and Riva, Alessandro},
-    booktitle = {Smart Tools and Applications in Graphics (STAG)},
     year = {2026},
-    publisher = {Eurographics Association},
-    doi = {10.2312/stag.2026.xxx}
+    publisher = {The Eurographics Association},
+    ISSN = {2617-4855},
+    ISBN = {978-3-03868-329-2},
+    DOI = {10.2312/stag.20261011}
 }
 ```
 
