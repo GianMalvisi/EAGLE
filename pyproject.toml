@@ -42,7 +42,7 @@ sam2 = ["segment-anything-2"]
 
 [project.urls]
 "Homepage" = "https://github.com/GianMalvisi/EAGLE"
-"Paper" = "https://diglib.eg.org/handle/10.2312/stag20261xxx"
+"Paper" = "https://diglib.eg.org/handle/10.2312/stag20261011"
 "Bug Tracker" = "https://github.com/GianMalvisi/EAGLE/issues"
 
 [tool.hatch.build.targets.wheel]
